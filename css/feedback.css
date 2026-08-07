@@ -1,0 +1,81 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #f6f8fa;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.feedback-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.feedback-card {
+  background:white;
+  padding: 30px;
+  border-radius:12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  max-width: 400px;
+  width:90%;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 20px;
+  color:#2f6f73;
+}
+
+.stars {
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.star {
+  font-size:36px;
+  color:#d9d9d9;
+  cursor:pointer;
+  transition: color 0.2s;
+}
+
+.star.hover,
+.star.selected {
+  color:#FFD43B;
+}
+
+.feedback-textbox {
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  margin-bottom:20px;
+  resize:none;
+  font-size:14px;
+}
+
+.feedback-submit-btn {
+  padding:12px 20px;
+  border:none;
+  background:#2f6f73;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.feedback-submit-btn:disabled {
+  background:#5b8f94;
+  cursor:not-allowed;
+}
+
+.success-msg {
+  margin-top:20px;
+  color:green;
+  font-weight:bold;
+}
