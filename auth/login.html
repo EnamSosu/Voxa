@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Spectra</title>
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <p>Welcome back. Continue your accessible browsing.</p>
+
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email Address" required>
+      <input type="password" id="password" placeholder="Password" required>
+
+      <div class="options">
+        <label>
+          <input type="checkbox" id="rememberMe"> Remember me
+        </label>
+        <a href="#" id="forgotPassword">Forgot password?</a>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="switch">
+      Don't have an account?
+      <a href="signup.html">Create one</a>
+    </p>
+  </div>
+
+  <script type="module" src="../js/login.js"></script>
+</body>
+</html>
