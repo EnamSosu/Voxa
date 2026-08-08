@@ -1,0 +1,121 @@
+:root {
+  --bg: #f7f4f0;
+  --primary: #3d6b5e;
+  --secondary: #5a8a7a;
+  --text: #2c2a26;
+  --card-bg: #ffffff;
+  --muted: #666;
+  --border: #ccc;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --star-empty: #d9d9d9;
+  --star-filled: #FFD43B;
+  --success: #16a34a;
+}
+
+html.dark {
+  --bg: #1a1f1d;
+  --primary: #7ab8a8;
+  --secondary: #9bcbbd;
+  --text: #e8e6e1;
+  --card-bg: #232a27;
+  --muted: #a8b0ac;
+  --border: #3a4540;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --star-empty: #4a5550;
+  --star-filled: #FFD43B;
+  --success: #4ade80;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.feedback-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.feedback-card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--shadow);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.star {
+  font-size: 36px;
+  color: var(--star-empty);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star.hover,
+.star.selected {
+  color: var(--star-filled);
+}
+
+.feedback-textbox {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+  resize: none;
+  font-size: 14px;
+  background: var(--card-bg);
+  color: var(--text);
+  box-sizing: border-box;
+}
+
+.feedback-submit-btn {
+  padding: 12px 20px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.feedback-submit-btn:hover {
+  background: var(--secondary);
+}
+
+.feedback-submit-btn:disabled {
+  background: var(--secondary);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.success-msg {
+  margin-top: 20px;
+  color: var(--success);
+  font-weight: bold;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voxa Dashboard</title>
+  <script>
+    (function () {
+      const saved = localStorage.getItem("voxa-theme");
+      if (saved === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <!-- Mobile top bar (visible only on small screens) -->
+    <header class="mobile-topbar">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <h2 class="mobile-logo">Voxa</h2>
+      <div class="mobile-user" id="mobileUserName"></div>
+    </header>
+
+    <!-- Dark overlay when menu is open -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>Voxa</h2>
+        <button class="close-sidebar" id="closeSidebarBtn" aria-label="Close menu">&times;</button>
+      </div>
+
+      <!-- Enhanced User Profile -->
+      <div class="user-profile" id="userProfile">
+        <div class="avatar" id="userAvatar">U</div>
+        <div class="profile-info">
+          <span class="profile-label">Signed in as</span>
+          <strong id="profileName">User</strong>
+          <span class="profile-email" id="profileEmail"></span>
+        </div>
+      </div>
+
+      <nav>
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="../feedback/feedback.html">Feedback</a>
+        <a href="#">Settings</a>
+      </nav>
+
+      <button id="logoutBtn">Logout</button>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <header class="page-header">
+        <h1>Your Accessibility Hub</h1>
+        <p class="welcome-text">Welcome back, <span id="userName">User</span></p>
+        <p class="subtitle">Control your Voxa tools and extension.</p>
+      </header>
+
+      <section class="features">
+        <div class="feature">
+          <h3>🔊 Read Page Aloud</h3>
+          <p>Instantly listen to any webpage.</p>
+        </div>
+        <div class="feature">
+          <h3>🧠 AI Summaries</h3>
+          <p>Understand long pages quickly.</p>
+        </div>
+        <div class="feature">
+          <h3>🎨 Contrast Control</h3>
+          <p>Adjust page colors for better readability.</p>
+        </div>
+        <div class="feature">
+          <h3>📖 Selection Reader</h3>
+          <p>Select text and hear it instantly.</p>
+        </div>
+        <div class="feature">
+          <h3>🎤 Voice Commands</h3>
+          <p>Control browsing with your voice.</p>
+        </div>
+      </section>
+
+      <section class="extension-card">
+        <h2>Install Voxa Extension</h2>
+        <p>Download and install the browser extension.</p>
+        <a href="../downloads/voxa-extension.zip" download>
+          <button class="download-btn" id="downloadBtn">Download Extension</button>
+        </a>
+      </section>
+    </main>
+
+  </div>
+
+  <script type="module" src="../js/dashboard.js"></script>
+</body>
+</html>

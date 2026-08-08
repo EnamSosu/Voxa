@@ -1,0 +1,472 @@
+/* Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f7f4f0;
+  --primary: #3d6b5e;
+  --secondary: #5a8a7a;
+  --text: #2c2a26;
+  --light: #ffffff;
+  --accent: #e8f0ec;
+  --card-bg: #ffffff;
+  --nav-bg: #ffffff;
+  --footer-bg: #eef4f1;
+  --shadow: rgba(0, 0, 0, 0.06);
+  --muted: #666;
+  --border: #d4e8e8;
+  --hover-bg: #f0f7f7;
+  --active-bg: #e6f3f3;
+}
+
+html.dark {
+  --bg: #1a1f1d;
+  --primary: #7ab8a8;
+  --secondary: #9bcbbd;
+  --text: #e8e6e1;
+  --light: #232a27;
+  --accent: #2a3530;
+  --card-bg: #232a27;
+  --nav-bg: #1e2522;
+  --footer-bg: #161b19;
+  --shadow: rgba(0, 0, 0, 0.25);
+  --muted: #a8b0ac;
+  --border: #3a4540;
+  --hover-bg: #2a3530;
+  --active-bg: #2f403a;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ========== Desktop Sidebar ========== */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--nav-bg);
+  padding: 28px 22px;
+  box-shadow: 2px 0 12px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+  transition: background 0.3s ease;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.sidebar h2 {
+  color: var(--primary);
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.close-sidebar {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* ========== Enhanced User Profile ========== */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--hover-bg) 100%);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 2px 8px rgba(61, 107, 94, 0.25);
+}
+
+.avatar.has-photo {
+  background-color: transparent;
+  font-size: 0;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.profile-label {
+  font-size: 0.78rem;
+  color: var(--secondary);
+  font-weight: 500;
+  margin-bottom: 1px;
+}
+
+.profile-info strong {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-email {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========== Nav ========== */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar a:hover {
+  background: var(--hover-bg);
+  color: var(--primary);
+}
+
+.sidebar a.active {
+  background: var(--active-bg);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.sidebar button#logoutBtn {
+  margin-top: 24px;
+  width: 100%;
+  padding: 11px 16px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.sidebar button#logoutBtn:hover {
+  background: var(--secondary);
+}
+
+/* ========== Mobile top bar ========== */
+.mobile-topbar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--nav-bg);
+  box-shadow: 0 2px 8px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  transition: background 0.3s ease;
+}
+
+.mobile-logo {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.mobile-user {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Hamburger */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2.5px;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.hamburger:hover {
+  background: var(--hover-bg);
+}
+
+/* Overlay */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 95;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.sidebar-overlay.open {
+  display: block;
+  opacity: 1;
+}
+
+/* ========== Main content ========== */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  min-width: 0;
+}
+
+.page-header {
+  margin-bottom: 36px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.welcome-text {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.welcome-text span {
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Features grid */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.feature {
+  background: var(--card-bg);
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s, background 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--shadow);
+}
+
+.feature h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.feature p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Extension card */
+.extension-card {
+  margin-top: 48px;
+  background: var(--card-bg);
+  padding: 28px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: background 0.3s ease;
+}
+
+.extension-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.extension-card p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.download-btn {
+  padding: 12px 22px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.download-btn:hover {
+  background: var(--secondary);
+}
+
+/* ========== Mobile & Tablet (≤ 800px) ========== */
+@media (max-width: 800px) {
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .mobile-topbar {
+    display: flex;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 290px;
+    max-width: 85vw;
+    padding: 24px 18px;
+    transform: translateX(-100%);
+    transition: transform 0.28s ease;
+    box-shadow: 4px 0 20px var(--shadow);
+    z-index: 100;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .close-sidebar {
+    display: block;
+  }
+
+  .sidebar-header {
+    margin-bottom: 22px;
+  }
+
+  .user-profile {
+    padding: 14px;
+    margin-bottom: 24px;
+  }
+
+  .avatar {
+    width: 44px;
+    height: 44px;
+    font-size: 0.95rem;
+  }
+
+  .main-content {
+    padding: 24px 18px 40px;
+  }
+
+  .page-header h1 {
+    font-size: 1.45rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .feature {
+    padding: 18px;
+  }
+
+  .extension-card {
+    margin-top: 36px;
+    padding: 22px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+  .main-content {
+    padding: 18px 14px 32px;
+  }
+
+  .mobile-user {
+    max-width: 90px;
+  }
+
+  .user-profile {
+    gap: 12px;
+  }
+}
