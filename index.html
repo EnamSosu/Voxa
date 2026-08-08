@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Voxa is a free accessible screen reader and browser extension that helps visually impaired users read webpages aloud,
+adjust contrast, get smart summaries, and navigate with voice commands.">
+<title>Voxa Screen Reader</title>
+
+<style>
+
+:root{
+--bg:#f4f7f8;
+--primary:#2f6f73;
+--secondary:#5b8f94;
+--text:#1f2a2c;
+--light:#ffffff;
+--accent:#d9ecee;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:var(--light);
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+nav h2{
+color:var(--primary);
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:var(--text);
+font-size:15px;
+}
+
+nav a:hover{
+color:var(--primary);
+}
+
+/* HERO */
+
+.hero{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:space-between;
+padding:80px 8%;
+}
+
+.hero-text{
+flex:1;
+min-width:280px;
+}
+
+.hero-text h1{
+font-size:42px;
+margin-bottom:20px;
+color:var(--primary);
+}
+
+.hero-text p{
+max-width:500px;
+margin-bottom:25px;
+}
+
+.hero-text button{
+background:var(--primary);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+.hero-text button:hover{
+background:var(--secondary);
+}
+
+/* HERO IMAGE */
+
+.hero-preview{
+flex:1;
+min-width:280px;
+display:flex;
+justify-content:center;
+}
+
+.preview-box{
+width:320px;
+height:200px;
+background:var(--accent);
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:var(--primary);
+font-weight:bold;
+}
+
+/* FEATURES */
+
+.features{
+padding:80px 8%;
+text-align:center;
+}
+
+.features h2{
+margin-bottom:50px;
+color:var(--primary);
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+}
+
+.feature{
+background:var(--light);
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.04);
+}
+
+.feature h3{
+margin-bottom:10px;
+color:var(--secondary);
+}
+
+/* ACCESSIBILITY PREVIEW */
+
+.accessibility{
+padding:80px 8%;
+background:var(--accent);
+}
+
+.accessibility h2{
+text-align:center;
+margin-bottom:40px;
+color:var(--primary);
+}
+
+.access-box{
+background:white;
+padding:30px;
+border-radius:10px;
+max-width:900px;
+margin:auto;
+}
+
+.access-box p{
+margin-bottom:15px;
+}
+
+/* REVIEWS */
+
+.reviews{
+padding:80px 8%;
+text-align:center;
+}
+
+.review-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.review{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* FEEDBACK */
+
+.feedback{
+  padding: 80px 8%;
+  background: var(--primary);
+  color: white;
+  text-align: center;
+}
+
+.feedback-link{
+  display: inline-block;
+  margin-top: 20px;
+  background: white;
+  color: var(--primary);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.feedback-link:hover{
+  opacity: 0.9;
+}
+
+/* FOOTER */
+
+footer{
+padding:30px;
+text-align:center;
+font-size:14px;
+background:#e9f2f3;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero{
+text-align:center;
+}
+
+.hero-preview{
+margin-top:40px;
+}
+
+nav ul{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+<h2>Voxa</h2>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Features</a></li>
+<li><a href="#">Accessibility</a></li>
+<li><a href="#">Reviews</a></li>
+</ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Technology That Speaks For Everyone</h1>
+
+<p>
+Spectra is a modern screen reader designed to make the internet
+accessible for visually impaired users. Listen to webpages,
+control navigation with your voice, and experience a calmer web.
+</p>
+
+<button id="getStartedBtn">Get Started</button>
+
+</div>
+
+<div class="hero-preview">
+
+<div class="preview-box">
+Accessibility Preview
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<h2>Powerful Accessibility Features</h2>
+
+<div class="feature-grid">
+
+<div class="feature">
+<h3>🔊 Read Page Aloud</h3>
+<p>Spectra reads full webpages clearly with natural voice narration.</p>
+</div>
+
+<div class="feature">
+<h3>🧠 Smart Summaries</h3>
+<p>Instantly understand long articles with automatic summaries.</p>
+</div>
+
+<div class="feature">
+<h3>🎨 Contrast Tool</h3>
+<p>Adjust colors and contrast to reduce eye strain.</p>
+</div>
+
+<div class="feature">
+<h3>📖 Selection Reader</h3>
+<p>Highlight any text and Spectra reads it aloud instantly.</p>
+</div>
+
+<div class="feature">
+<h3>🎙 Voice Control</h3>
+<p>Navigate websites using voice commands.</p>
+</div>
+
+<div class="feature">
+<h3>💬 Feedback System</h3>
+<p>Users can send feedback to improve accessibility.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ACCESSIBILITY -->
+
+<section class="accessibility">
+
+<h2>Accessibility First Design</h2>
+
+<div class="access-box">
+
+<p>
+Spectra is built with accessibility at its core. The interface uses
+soft colors, readable fonts, and carefully selected contrast levels
+to reduce strain for users with visual impairments.
+</p>
+
+<p>
+The extension supports keyboard navigation, voice commands,
+and customizable reading modes to make browsing easier.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- REVIEWS -->
+
+<section class="reviews">
+
+<h2>What Users Are Saying</h2>
+
+<div class="review-grid">
+
+<div class="review">
+<p>
+“Spectra changed how I browse the internet.
+The reading voice is clear and the contrast tool helps my eyes.”
+</p>
+<strong>— Ama K.</strong>
+</div>
+
+<div class="review">
+<p>
+“I love the selection reader. I can highlight anything
+and hear it instantly.”
+</p>
+<strong>— Daniel S.</strong>
+</div>
+
+<div class="review">
+<p>
+“The design is calm and not harsh like other tools.”
+</p>
+<strong>— Lydia M.</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FEEDBACK -->
+
+<section class="feedback">
+
+<h2>Help Us Improve Spectra</h2>
+
+<p>
+Your feedback helps us build better accessibility tools.
+</p>
+
+<a href="../feedback/feedback.html" class="feedback-link">Provide Feedback</a>
+
+</section>
+
+
+<footer>
+
+© 2026 Spectra Screen Reader • Accessibility for Everyone
+
+</footer>
+
+
+<!-- LINK TO JS FILE -->
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
