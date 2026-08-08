@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Voxa is a free accessible screen reader and browser extension that helps visually impaired users read webpages aloud,
+adjust contrast, get smart summaries, and navigate with voice commands.">
+<title>Voxa Screen Reader</title>
+
+<!-- Apply dark mode immediately (prevents blinking) -->
+<script>
+  (function () {
+    const saved = localStorage.getItem("voxa-theme");
+    if (saved === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+  })();
+</script>
+
+<!-- Favicon (clean path + clean filename) -->
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+
+<style>
+
+:root{
+--bg:#f7f4f0;
+--primary:#3d6b5e;
+--secondary:#5a8a7a;
+--text:#2c2a26;
+--light:#ffffff;
+--accent:#e8f0ec;
+--card-bg:#ffffff;
+--nav-bg:#ffffff;
+--footer-bg:#eef4f1;
+--shadow:rgba(0,0,0,0.06);
+}
+
+html.dark{
+--bg:#1a1f1d;
+--primary:#7ab8a8;
+--secondary:#9bcbbd;
+--text:#e8e6e1;
+--light:#232a27;
+--accent:#2a3530;
+--card-bg:#232a27;
+--nav-bg:#1e2522;
+--footer-bg:#161b19;
+--shadow:rgba(0,0,0,0.25);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI", Arial, sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+transition:background 0.3s ease, color 0.3s ease;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:var(--nav-bg);
+box-shadow:0 2px 10px var(--shadow);
+position:sticky;
+top:0;
+z-index:100;
+transition:background 0.3s ease;
+}
+
+nav h2{
+color:var(--primary);
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+align-items:center;
+}
+
+nav a{
+text-decoration:none;
+color:var(--text);
+font-size:15px;
+transition:color 0.2s ease;
+}
+
+nav a:hover{
+color:var(--primary);
+}
+
+.theme-toggle{
+background:var(--accent);
+border:none;
+width:40px;
+height:40px;
+border-radius:50%;
+cursor:pointer;
+font-size:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:var(--primary);
+transition:background 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover{
+transform:scale(1.05);
+}
+
+/* HERO */
+
+.hero{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:space-between;
+padding:80px 8%;
+}
+
+.hero-text{
+flex:1;
+min-width:280px;
+}
+
+.hero-text h1{
+font-size:42px;
+margin-bottom:20px;
+color:var(--primary);
+}
+
+.hero-text p{
+max-width:500px;
+margin-bottom:25px;
+}
+
+.hero-text button{
+background:var(--primary);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+transition:background 0.2s ease;
+}
+
+.hero-text button:hover{
+background:var(--secondary);
+}
+
+/* HERO IMAGE */
+
+.hero-preview{
+flex:1;
+min-width:280px;
+display:flex;
+justify-content:center;
+}
+
+.preview-box{
+width:320px;
+height:200px;
+background:var(--accent);
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:var(--primary);
+font-weight:bold;
+transition:background 0.3s ease;
+}
+
+/* FEATURES */
+
+.features{
+padding:80px 8%;
+text-align:center;
+}
+
+.features h2{
+margin-bottom:50px;
+color:var(--primary);
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+}
+
+.feature{
+background:var(--card-bg);
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 10px var(--shadow);
+transition:background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature h3{
+margin-bottom:10px;
+color:var(--secondary);
+}
+
+/* ACCESSIBILITY PREVIEW */
+
+.accessibility{
+padding:80px 8%;
+background:var(--accent);
+transition:background 0.3s ease;
+}
+
+.accessibility h2{
+text-align:center;
+margin-bottom:40px;
+color:var(--primary);
+}
+
+.access-box{
+background:var(--card-bg);
+padding:30px;
+border-radius:10px;
+max-width:900px;
+margin:auto;
+transition:background 0.3s ease;
+}
+
+.access-box p{
+margin-bottom:15px;
+}
+
+/* REVIEWS */
+
+.reviews{
+padding:80px 8%;
+text-align:center;
+}
+
+.review-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.review{
+background:var(--card-bg);
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 10px var(--shadow);
+transition:background 0.3s ease;
+}
+
+/* FEEDBACK */
+
+.feedback{
+  padding: 80px 8%;
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  transition:background 0.3s ease;
+}
+
+.feedback-link{
+  display: inline-block;
+  margin-top: 20px;
+  background: white;
+  color: var(--primary);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.feedback-link:hover{
+  opacity: 0.9;
+}
+
+/* FOOTER */
+
+footer{
+padding:30px;
+text-align:center;
+font-size:14px;
+background:var(--footer-bg);
+transition:background 0.3s ease;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero{
+text-align:center;
+}
+
+.hero-preview{
+margin-top:40px;
+}
+
+nav ul{
+display:none;
+}
+
+.theme-toggle{
+margin-left:auto;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+<h2>Voxa</h2>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#accessibility">Accessibility</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark / light mode">
+🌙
+</button>
+</li>
+</ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-text">
+
+<h1>Technology That Speaks For Everyone</h1>
+
+<p>
+Spectra is a modern screen reader designed to make the internet
+accessible for visually impaired users. Listen to webpages,
+control navigation with your voice, and experience a calmer web.
+</p>
+
+<button id="getStartedBtn">Get Started</button>
+
+</div>
+
+<div class="hero-preview">
+
+<div class="preview-box">
+Accessibility Preview
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features" id="features">
+
+<h2>Powerful Accessibility Features</h2>
+
+<div class="feature-grid">
+
+<div class="feature">
+<h3>🔊 Read Page Aloud</h3>
+<p>Spectra reads full webpages clearly with natural voice narration.</p>
+</div>
+
+<div class="feature">
+<h3>🧠 Smart Summaries</h3>
+<p>Instantly understand long articles with automatic summaries.</p>
+</div>
+
+<div class="feature">
+<h3>🎨 Contrast Tool</h3>
+<p>Adjust colors and contrast to reduce eye strain.</p>
+</div>
+
+<div class="feature">
+<h3>📖 Selection Reader</h3>
+<p>Highlight any text and Spectra reads it aloud instantly.</p>
+</div>
+
+<div class="feature">
+<h3>🎙 Voice Control</h3>
+<p>Navigate websites using voice commands.</p>
+</div>
+
+<div class="feature">
+<h3>💬 Feedback System</h3>
+<p>Users can send feedback to improve accessibility.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ACCESSIBILITY -->
+
+<section class="accessibility" id="accessibility">
+
+<h2>Accessibility First Design</h2>
+
+<div class="access-box">
+
+<p>
+Spectra is built with accessibility at its core. The interface uses
+soft colors, readable fonts, and carefully selected contrast levels
+to reduce strain for users with visual impairments.
+</p>
+
+<p>
+The extension supports keyboard navigation, voice commands,
+and customizable reading modes to make browsing easier.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- REVIEWS -->
+
+<section class="reviews" id="reviews">
+
+<h2>What Users Are Saying</h2>
+
+<div class="review-grid">
+
+<div class="review">
+<p>
+“Spectra changed how I browse the internet.
+The reading voice is clear and the contrast tool helps my eyes.”
+</p>
+<strong>— Ama K.</strong>
+</div>
+
+<div class="review">
+<p>
+“I love the selection reader. I can highlight anything
+and hear it instantly.”
+</p>
+<strong>— Daniel S.</strong>
+</div>
+
+<div class="review">
+<p>
+“The design is calm and not harsh like other tools.”
+</p>
+<strong>— Lydia M.</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FEEDBACK -->
+
+<section class="feedback">
+
+<h2>Help Us Improve Spectra</h2>
+
+<p>
+Your feedback helps us build better accessibility tools.
+</p>
+
+<a href="../feedback/feedback.html" class="feedback-link" id="feedbackBtn">Provide Feedback</a>
+
+</section>
+
+
+<footer>
+
+© 2026 Spectra Screen Reader • Accessibility for Everyone
+
+</footer>
+
+
+<!-- LINK TO JS FILE -->
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
