@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voxa Feedback</title>
+<link rel="stylesheet" href="../css/feedback.css">
+</head>
+<body>
+
+<div class="feedback-page-container">
+
+  <div class="feedback-card">
+
+    <h2 class="title">Rate Your Experience</h2>
+
+    <!-- Stars -->
+    <div class="stars" id="stars">
+      <span data-value="1" class="star">&#9733;</span>
+      <span data-value="2" class="star">&#9733;</span>
+      <span data-value="3" class="star">&#9733;</span>
+      <span data-value="4" class="star">&#9733;</span>
+      <span data-value="5" class="star">&#9733;</span>
+    </div>
+
+    <!-- Feedback Text -->
+    <textarea id="feedbackText" class="feedback-textbox" rows="4" placeholder="Tell us what you think..."></textarea>
+
+    <button id="submitBtn" class="feedback-submit-btn">Submit Feedback</button>
+
+    <!-- Success message -->
+    <p id="successMsg" class="success-msg" style="display:none;">🎉 Thank you for your feedback!</p>
+
+  </div>
+
+</div>
+
+<script type="module" src="../js/feedback.js"></script>
+</body>
+</html>
